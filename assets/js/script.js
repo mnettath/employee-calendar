@@ -1,7 +1,13 @@
 // https://day.js.org/en/
+// VARIABLES
+var saveButton = $(".saveBtn");
 
-var today = dayjs();
-$("#currentDay").text(today.format("dddd, MMMM D, YYYY"));
+// FUNCTIONS
+// Purpose: display the time at the top of the calendar
+function displayDate() {
+  var today = dayjs();
+  $("#currentDay").text(today.format("dddd, MMMM D, YYYY"));
+}
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
@@ -13,7 +19,17 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-  //
+
+  // Key to save the user input in local storage: id = "hour-5"
+
+  // Purpose: save the event the user types in to local storage
+  function handleSave(event) {
+    localStorage.setItem("event", JSON.stringify(event));
+    console.log("I am in the handleSave function");
+  }
+
+  saveButton.on("click", handleSave);
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the

@@ -27,7 +27,8 @@ $(function () {
   // Purpose: save the event the user types in to local storage
   function handleSave(event) {
     console.log(event);
-    $(this).text("Clicked!");
+    $(this).text("Saved!");
+
     var id = $(this).parent().attr("id");
     // this = refers to the object that triggered the event
     // children: access elements inside , parent: access the outer element , siblings: element next to

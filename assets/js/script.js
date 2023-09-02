@@ -26,6 +26,7 @@ $(function () {
 
   // Purpose: save the event the user types in to local storage
   function handleSave(event) {
+    console.log(event);
     $(this).text("Clicked!");
     var id = $(this).parent().attr("id");
     // this = refers to the object that triggered the event
@@ -44,21 +45,21 @@ $(function () {
 
     userEvents.push(userInput);
 
-    localStorage.setItem("userEvent", JSON.stringify(userEvents));
+    localStorage.setItem("userEvents", JSON.stringify(userEvents));
   }
 
   // TODO: Add a listener for click events on the save button.
   saveButton.on("click", handleSave);
 
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time? USE AN IF STATEMENT
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+  // TODO: Add code to apply the past, present, or future class to each time block by comparing the id to the current hour.
+  // HINTS: How can the id attribute of each time-block be used to conditionally add or remove the past, present, and future classes?
+  // How can Day.js be used to get the current hour in 24-hour time? USE AN IF STATEMENT
+
+  // saves the events, even when the page is refreshed
+  // loop iterates over each event in the userEvents array
+  userEvents.forEach(function (event) {
+    $("#" + event.id) // finds the html element with an id attribute that matches the event.id
+      .find("textarea") // once we find the matching id, we are going to look for a textarea inside its div
+      .val(event.text);
+  });
 });

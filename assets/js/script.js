@@ -10,7 +10,7 @@
 
 $(function () {
   var saveButton = $(".saveBtn");
-  var userEvent = JSON.parse(localStorage.getItem("userEvent")) || {};
+  var userEvents = JSON.parse(localStorage.getItem("userEvents")) || [];
   // key value?
   // Purpose: display the time at the top of the calendar
   function displayDate() {
@@ -18,26 +18,34 @@ $(function () {
     $("#currentDay").text(today.format("dddd, MMMM D, YYYY"));
   }
   displayDate();
-  // This code should use the id in the containing time-block as a key to  save the user input in local storage.
+
   // HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
-  // Key to save the user input in local storage: id = "hour-5"
-
   // Purpose: save the event the user types in to local storage
   function handleSave(event) {
     $(this).text("Clicked!");
-    var id = $(this).parent().attr("id"); // this = refers to the object that triggered the event
+    var id = $(this).parent().attr("id");
+    // this = refers to the object that triggered the event
+    // children: access elements inside , parent: access the outer element , siblings: element next to
+    // This code should use the id in the containing time-block as a key to  save the user input in local storage.
     console.log(id);
     var text = $(this).siblings("textarea").val();
     console.log(text);
     // using sibling because the text we are trying to target is a sibling of the button
 
-    localStorage.setItem("userEvent", JSON.stringify(userEvent));
+    // purpose: gethering the userInputs so that we can push them into the userEvents array in local storage
+    var userInput = {
+      id: id,
+      text: text,
+    };
+
+    userEvents.push(userInput);
+
+    localStorage.setItem("userEvent", JSON.stringify(userEvents));
   }
-  // children: access elements inside , parent: access the outer element , siblings: element next to
 
   // TODO: Add a listener for click events on the save button.
   saveButton.on("click", handleSave);

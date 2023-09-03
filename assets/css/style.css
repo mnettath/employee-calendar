@@ -1,8 +1,11 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
 }
 
+header {
+  background-color: #c4a636;
+}
 textarea {
   background: transparent;
   border: none;
@@ -31,17 +34,17 @@ textarea {
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color: #afadad;
   color: white;
 }
 
 .present {
-  background-color: #ff6961;
+  background-color: #9e4652;
   color: white;
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: #93a855;
   color: white;
 }
 
@@ -49,7 +52,7 @@ textarea {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06aed5;
+  background-color: #4f5d6d;
   color: white;
 }
 

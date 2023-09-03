@@ -12,10 +12,16 @@ $(function () {
   }
   displayDate();
 
-  // Purpose: save the event the user types in to local storage
+  // Purpose: revert from "Saved!" back to the regular saved button
   function handleSave(event) {
     console.log(event);
     $(this).text("Saved!");
+
+    setTimeout(function () {
+      saveButton.html('<i class="fas fa-save" aria-hidden="true"></i>');
+    }, 1000);
+
+    // Purpose: save the event the user types in to local storag
 
     var id = $(this).parent().attr("id");
     // this = refers to the object that triggered the event
@@ -69,7 +75,7 @@ $(function () {
   // loop iterates over each event in the userEvents array
   userEvents.forEach(function (event) {
     $("#" + event.id) // finds the html element with an id attribute that matches the event.id
-      .find("textarea") // once we find the matching id, we are going to look for a textarea inside its div
+      .find("textarea") // once we find the matching id, we are going to look for a textarea insitde its div
       .val(event.text);
   });
 });

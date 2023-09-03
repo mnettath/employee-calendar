@@ -14,7 +14,7 @@ This employee calendar displays the current date at the top of the page. The cal
 
 ![Employee Calendar Screenshot](assets/images/EmployeeCalendarScreenshot.png)
 
-Link to deployed app:
+Link to deployed app: https://mnettath.github.io/employee-calendar/
 
 ## Credits
 
